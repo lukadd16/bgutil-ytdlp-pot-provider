@@ -94,6 +94,7 @@ class BgUtilHTTPPTP(BgUtilPTPBase):
 
     def is_available(self):
         if not self._configuration_arg('base_url', default=[None])[0]:
+            self._info_and_raise('No base_url provided')
             return False
 
         return self._server_available or self._last_server_check + 60 < int(time.time())
